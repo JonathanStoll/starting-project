@@ -18,11 +18,7 @@ let minBoundary = 1;
 let maxBoundary = 100;
 
 function GameScreen({ userNumber, onGameOver }) {
-  const initialGuess = generateRandomBetween(
-    1,
-    100,
-    userNumber
-  );
+  const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
   function nextGuessHandeler(direction) {
@@ -58,14 +54,18 @@ function GameScreen({ userNumber, onGameOver }) {
       <Title>Oponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText>Higher or lower?</InstructionText>
-        <View>
-          <PrimaryButton onPress={nextGuessHandeler.bind(this, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandeler.bind(this, "greater")}>
-            +
-          </PrimaryButton>
+        <InstructionText style={styles.instruction}>Higher or lower?</InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandeler.bind(this, "lower")}>
+              -
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandeler.bind(this, "greater")}>
+              +
+            </PrimaryButton>
+          </View>
         </View>
       </Card>
     </View>
@@ -79,4 +79,13 @@ const styles = StyleSheet.create({
     padding: 24,
     marginTop: 24,
   },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
+  },
+  instruction: {
+    paddingBottom: 12
+  }
 });
