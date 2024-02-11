@@ -9,11 +9,11 @@ export default Title;
 const styles = StyleSheet.create({
   titlePropety: {
     fontSize: 18,
-    fontWeight: "bold",
     color: "white",
     textAlign: "center",
     borderColor: "white",
     borderWidth: 2,
     padding: 16,
+    fontFamily: 'open-sans-bold'
   },
 });

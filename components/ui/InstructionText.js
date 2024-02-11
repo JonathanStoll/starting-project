@@ -12,5 +12,6 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 24,
       color: Colors.accent5,
+      fontFamily:'open-sans'
     },
   });
