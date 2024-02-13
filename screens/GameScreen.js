@@ -5,7 +5,7 @@ import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
-import {Ionicons} from '@expo/vector-icons'
+import { Ionicons } from "@expo/vector-icons";
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
 
@@ -50,21 +50,28 @@ function GameScreen({ userNumber, onGameOver }) {
       onGameOver();
     }
   }, [currentGuess, userNumber, onGameOver]);
+
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
   return (
     <View style={styles.screen}>
       <Title>Oponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText style={styles.instruction}>Higher or lower?</InstructionText>
+        <InstructionText style={styles.instruction}>
+          Higher or lower?
+        </InstructionText>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandeler.bind(this, "lower")}>
-            <Ionicons name="remove-circle-outline" size={24}  />
+              <Ionicons name="remove-circle-outline" size={24} />
             </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandeler.bind(this, "greater")}>
-            <Ionicons name="add-circle-outline" size={24}  />
+              <Ionicons name="add-circle-outline" size={24} />
             </PrimaryButton>
           </View>
         </View>
@@ -87,6 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   instruction: {
-    paddingBottom: 12
-  }
+    paddingBottom: 12,
+  },
 });
