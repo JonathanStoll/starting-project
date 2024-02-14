@@ -14,12 +14,12 @@ export default function App() {
   const [guessRounds, setGuessRounds] = useState(0);
 
   function startNewGmaeHandeler() {
-    setUserNumber(null)
-    
+    setUserNumber(null);
+    setGuessRounds(0);
   }
-  function gameOverHandeler() {
+  function gameOverHandeler(numberOfRounds) {
     setGameIsOver(true);
-    setGuessRounds(0)
+    setGuessRounds(numberOfRounds);
   }
 
   const [fontsLoaded] = useFonts({
